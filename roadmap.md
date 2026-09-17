@@ -1,6 +1,8 @@
-# Roadmap
-
 - [x] Criar sistema visual e estrutura compartilhada
 - [x] Criar Home, Obras, Instalações, Cinema, Sobre e Contato
 - [x] Adicionar interações, dados editáveis e metadados
 - [x] Validar desktop, celular e principais interações
+- [ ] Incorporar a série Estudo para floresta
+- [ ] Transformar a Home em experiência vertical com carrosséis
+- [ ] Migrar a identidade visual para fundo branco
+- [ ] Validar carrosséis e navegação em desktop e celular

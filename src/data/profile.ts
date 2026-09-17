@@ -1,7 +1,7 @@
-import retratoArtista from "@/assets/retrato-artista.jpg";
+﻿import retratoArtista from "@/assets/retrato-artista.jpg";
 
 export const profile = {
-  name: "Ruan Dornellas",
+  name: "Ruan D’Ornellas",
   legalArtistName: "Ruan D’Ornellas",
   tagline: "Artista Plástico · Instalações · Efeitos Especiais",
   birth: "Volta Redonda, RJ, 1987",

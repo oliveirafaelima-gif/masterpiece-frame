@@ -66,29 +66,36 @@
   --color-industrial: var(--industrial);
   --font-display: "Playfair Display", Georgia, serif;
   --font-sans: "Manrope", Arial, sans-serif;
+  /* Handwritten accent — used sparingly, only at a couple of key moments (see font-hand usages). */
+  --font-hand: "Caveat", cursive;
 }
 
 :root {
   --radius: 0.125rem;
-  --background: oklch(0.115 0.006 70);
-  --foreground: oklch(0.94 0.008 78);
-  --card: oklch(0.15 0.007 65);
-  --card-foreground: oklch(0.94 0.008 78);
-  --popover: oklch(0.16 0.008 70);
-  --popover-foreground: oklch(0.94 0.008 78);
-  --primary: oklch(0.74 0.055 82);
-  --primary-foreground: oklch(0.14 0.008 70);
-  --secondary: oklch(0.2 0.008 65);
-  --secondary-foreground: oklch(0.92 0.008 78);
-  --muted: oklch(0.19 0.007 65);
-  --muted-foreground: oklch(0.66 0.012 75);
-  --accent: oklch(0.7 0.065 78);
-  --accent-foreground: oklch(0.13 0.008 70);
+  --background: oklch(0.99 0.003 80);
+  --foreground: oklch(0.16 0.008 70);
+  --card: oklch(0.97 0.005 75);
+  --card-foreground: oklch(0.16 0.008 70);
+  --popover: oklch(0.995 0.002 80);
+  --popover-foreground: oklch(0.16 0.008 70);
+  --primary: oklch(0.2 0.01 70);
+  --primary-foreground: oklch(0.98 0.003 80);
+  --secondary: oklch(0.94 0.006 75);
+  --secondary-foreground: oklch(0.16 0.008 70);
+  --muted: oklch(0.955 0.005 75);
+  --muted-foreground: oklch(0.42 0.012 70);
+  /* Darkened from the original oklch(0.58 0.09 75) — that only hit 4.25:1 against the
+     background (fails WCAG AA's 4.5:1 for normal text) since it's used as a plain text
+     color everywhere (active nav links, "ver todas" links, filter state). This shade
+     gives 5.9:1. accent-foreground was flipped light to match, since it's only ever
+     used as text drawn ON TOP of an accent-colored background (buttons), never on its own. */
+  --accent: oklch(0.5 0.09 75);
+  --accent-foreground: oklch(0.98 0.003 80);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.29 0.009 70);
-  --input: oklch(0.34 0.01 70);
-  --ring: oklch(0.7 0.065 78);
+  --destructive-foreground: oklch(0.98 0.003 80);
+  --border: oklch(0.88 0.006 75);
+  --input: oklch(0.82 0.008 75);
+  --ring: oklch(0.5 0.09 75);
   --overlay: oklch(0.08 0.005 70 / 74%);
   --overlay-foreground: oklch(0.97 0.006 78);
   --overlay-muted: oklch(0.78 0.012 75);
@@ -157,23 +164,47 @@
     text-rendering: optimizeLegibility;
   }
 
-  html { scroll-behavior: smooth; }
-  button, a, input, textarea { letter-spacing: 0; }
-  ::selection { background: var(--accent); color: var(--accent-foreground); }
+  html {
+    scroll-behavior: smooth;
+  }
+  button,
+  a,
+  input,
+  textarea {
+    letter-spacing: 0;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
 }
 
-@utility font-display { font-family: var(--font-display); }
+@utility font-display {
+  font-family: var(--font-display);
+}
+@utility font-hand {
+  font-family: var(--font-hand);
+}
 
 @utility page-shell {
   width: 100%;
   max-width: 1600px;
   margin-inline: auto;
   padding-inline: 1.25rem;
-  @media (width >= 40rem) { padding-inline: 2rem; }
-  @media (width >= 64rem) { padding-inline: 3rem; }
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 3rem;
+  }
 }
 
-@utility page-intro { padding-block: 4rem 0; @media (width >= 40rem) { padding-block-start: 6rem; } }
+@utility page-intro {
+  padding-block: 4rem 0;
+  @media (width >= 40rem) {
+    padding-block-start: 6rem;
+  }
+}
 
 @utility eyebrow {
   font-size: 0.6875rem;
@@ -190,21 +221,135 @@
   text-transform: uppercase;
   color: var(--muted-foreground);
   transition: color 200ms ease;
-  &:hover { color: var(--foreground); }
-  &::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 1px; background: var(--accent); transform: scaleX(0); transition: transform 200ms ease; }
-  &[data-status="active"]::after { transform: scaleX(1); }
+  &:hover {
+    color: var(--foreground);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 200ms ease;
+  }
+  &[data-status="active"]::after {
+    transform: scaleX(1);
+  }
 }
 
-@utility form-label { display: grid; gap: 0.625rem; font-size: 0.6875rem; line-height: 1rem; text-transform: uppercase; color: var(--muted-foreground); }
-@utility editorial-field { height: 3rem; border-width: 0 0 1px 0; border-radius: 0; padding-inline: 0; box-shadow: none; color: var(--foreground); }
-@utility bg-overlay { background: var(--overlay); }
-@utility bg-dialog-overlay { background: var(--dialog-overlay); }
-@utility bg-hero-overlay { background: linear-gradient(to top, var(--overlay), transparent 60%); }
+@utility form-label {
+  display: grid;
+  gap: 0.625rem;
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+@utility editorial-field {
+  height: 3rem;
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+  padding-inline: 0;
+  box-shadow: none;
+  color: var(--foreground);
+}
+@utility bg-overlay {
+  background: var(--overlay);
+}
+@utility bg-dialog-overlay {
+  background: var(--dialog-overlay);
+}
+@utility bg-hero-overlay {
+  background: linear-gradient(to top, var(--overlay), transparent 60%);
+}
 
-@keyframes page-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-@utility page-enter { animation: page-enter 500ms ease-out both; }
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@utility page-enter {
+  animation: page-enter 500ms ease-out both;
+}
+
+/*
+ * Scroll-driven opening (ArtistHero / ScrollTypography / ArtworkReveal).
+ *
+ * Each letter gets fixed per-letter "seed" variables (--sx, --sy, --sr,
+ * --sxs, --sys) set once inline at mount, plus a single --lp (local
+ * progress, 0..1) written directly on the element every animation frame
+ * by JS. All math below only ever multiplies/adds vars — never divides by
+ * one — so it stays safe across browsers. Keeping the per-frame write down
+ * to one custom property per letter (instead of recomputing transform
+ * strings in JS) is what keeps this cheap at 60fps.
+ */
+@utility hero-letter {
+  display: inline-block;
+  will-change: transform, opacity;
+  --hs: var(--hero-scale, 1);
+  transform: translate3d(
+      calc(var(--lp, 0) * var(--sx, 0) * var(--hs) * 1px),
+      calc(var(--lp, 0) * var(--sy, 0) * var(--hs) * 1px),
+      0
+    )
+    rotate(calc(var(--lp, 0) * var(--sr, 0) * var(--hs) * 1deg))
+    scale(
+      calc(1 + var(--lp, 0) * var(--sxs, 0) * var(--hs)),
+      calc(1 + var(--lp, 0) * var(--sys, 0) * var(--hs))
+    );
+  opacity: calc(1 - var(--lp, 0) * 0.92);
+  font-variation-settings: "wght" calc(500 + var(--lp, 0) * 400);
+}
+
+@keyframes scroll-hint-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(0.4rem);
+    opacity: 1;
+  }
+}
+@utility scroll-hint {
+  animation: scroll-hint-drift 1.8s ease-in-out infinite;
+}
+
+@media (max-height: 480px) {
+  .scroll-hint {
+    display: none;
+  }
+}
+
+@utility reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

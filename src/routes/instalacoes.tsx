@@ -5,8 +5,8 @@ import { installations } from "@/data/installations";
 
 export const Route = createFileRoute("/instalacoes")({
   head: () => ({ meta: [
-    { title: "Instalações — Ruan Dornellas" }, { name: "description", content: "Projetos espaciais e instalações de Ruan Dornellas." },
-    { property: "og:title", content: "Instalações — Ruan Dornellas" }, { property: "og:description", content: "Projetos espaciais e instalações do artista." },
+    { title: "Instalações — Ruan D’Ornellas" }, { name: "description", content: "Projetos espaciais e instalações de Ruan D’Ornellas." },
+    { property: "og:title", content: "Instalações — Ruan D’Ornellas" }, { property: "og:description", content: "Projetos espaciais e instalações do artista." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
   ] }), component: InstalacoesPage,
 });

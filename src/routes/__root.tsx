@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -79,10 +79,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ruan Dornellas — Artista Plástico" },
-      { name: "description", content: "Portfólio de Ruan Dornellas, artista plástico brasileiro." },
-      { name: "author", content: "Ruan Dornellas" },
-      { property: "og:title", content: "Ruan Dornellas — Artista Plástico" },
+      { title: "Ruan D’Ornellas — Artista Plástico" },
+      {
+        name: "description",
+        content: "Portfólio de Ruan D’Ornellas, artista plástico brasileiro.",
+      },
+      { name: "author", content: "Ruan D’Ornellas" },
+      { property: "og:title", content: "Ruan D’Ornellas — Artista Plástico" },
       { property: "og:description", content: "Pintura, instalações e efeitos especiais." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -96,7 +99,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" },
+      {
+        rel: "stylesheet",
+        // Caveat (variable wght 400-700, SIL Open Font License 1.1, free for commercial
+        // use) is a handwritten accent for a couple of key moments only — see the
+        // `font-hand` utility in styles.css and its call sites.
+        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400&family=Caveat:wght@400..700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,

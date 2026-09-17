@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+﻿import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -24,7 +24,7 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
           className="min-w-0 truncate font-display text-xl text-foreground sm:text-2xl"
         >
-          Ruan Dornellas
+          Ruan D’Ornellas
         </Link>
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
           {navigation.map((item) => (

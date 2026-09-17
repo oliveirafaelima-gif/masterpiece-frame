@@ -5,8 +5,8 @@ import { profile } from "@/data/profile";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({ meta: [
-    { title: "Sobre — Ruan Dornellas" }, { name: "description", content: "Biografia e trajetória de Ruan Dornellas, artista plástico brasileiro." },
-    { property: "og:title", content: "Sobre — Ruan Dornellas" }, { property: "og:description", content: "Biografia e trajetória do artista." },
+    { title: "Sobre — Ruan D’Ornellas" }, { name: "description", content: "Biografia e trajetória de Ruan D’Ornellas, artista plástico brasileiro." },
+    { property: "og:title", content: "Sobre — Ruan D’Ornellas" }, { property: "og:description", content: "Biografia e trajetória do artista." },
     { property: "og:type", content: "profile" }, { name: "twitter:card", content: "summary_large_image" },
   ] }), component: SobrePage,
 });

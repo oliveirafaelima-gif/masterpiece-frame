@@ -9,8 +9,8 @@ import { profile } from "@/data/profile";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({ meta: [
-    { title: "Contato — Ruan Dornellas" }, { name: "description", content: "Entre em contato com Ruan Dornellas para obras, projetos, colaborações e imprensa." },
-    { property: "og:title", content: "Contato — Ruan Dornellas" }, { property: "og:description", content: "Obras, projetos, colaborações e imprensa." },
+    { title: "Contato — Ruan D’Ornellas" }, { name: "description", content: "Entre em contato com Ruan D’Ornellas para obras, projetos, colaborações e imprensa." },
+    { property: "og:title", content: "Contato — Ruan D’Ornellas" }, { property: "og:description", content: "Obras, projetos, colaborações e imprensa." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
   ] }), component: ContatoPage,
 });

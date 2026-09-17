@@ -3,8 +3,8 @@ import { cinemaImage, productions } from "@/data/cinema";
 
 export const Route = createFileRoute("/cinema")({
   head: () => ({ meta: [
-    { title: "Cinema e Efeitos Especiais — Ruan Dornellas" }, { name: "description", content: "Projetos de efeitos especiais e processos de Ruan Dornellas para cinema." },
-    { property: "og:title", content: "Cinema — Ruan Dornellas" }, { property: "og:description", content: "Efeitos especiais e processos para cinema." },
+    { title: "Cinema e Efeitos Especiais — Ruan D’Ornellas" }, { name: "description", content: "Projetos de efeitos especiais e processos de Ruan D’Ornellas para cinema." },
+    { property: "og:title", content: "Cinema — Ruan D’Ornellas" }, { property: "og:description", content: "Efeitos especiais e processos para cinema." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
   ] }), component: CinemaPage,
 });

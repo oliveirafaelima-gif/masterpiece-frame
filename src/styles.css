@@ -59,29 +59,41 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-overlay: var(--overlay);
+  --color-overlay-foreground: var(--overlay-foreground);
+  --color-overlay-muted: var(--overlay-muted);
+  --color-dialog-overlay: var(--dialog-overlay);
+  --color-industrial: var(--industrial);
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Manrope", Arial, sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 0.125rem;
+  --background: oklch(0.115 0.006 70);
+  --foreground: oklch(0.94 0.008 78);
+  --card: oklch(0.15 0.007 65);
+  --card-foreground: oklch(0.94 0.008 78);
+  --popover: oklch(0.16 0.008 70);
+  --popover-foreground: oklch(0.94 0.008 78);
+  --primary: oklch(0.74 0.055 82);
+  --primary-foreground: oklch(0.14 0.008 70);
+  --secondary: oklch(0.2 0.008 65);
+  --secondary-foreground: oklch(0.92 0.008 78);
+  --muted: oklch(0.19 0.007 65);
+  --muted-foreground: oklch(0.66 0.012 75);
+  --accent: oklch(0.7 0.065 78);
+  --accent-foreground: oklch(0.13 0.008 70);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.29 0.009 70);
+  --input: oklch(0.34 0.01 70);
+  --ring: oklch(0.7 0.065 78);
+  --overlay: oklch(0.08 0.005 70 / 74%);
+  --overlay-foreground: oklch(0.97 0.006 78);
+  --overlay-muted: oklch(0.78 0.012 75);
+  --dialog-overlay: oklch(0.03 0.004 70 / 92%);
+  --industrial: oklch(0.145 0.006 240);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +152,59 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
   }
+
+  html { scroll-behavior: smooth; }
+  button, a, input, textarea { letter-spacing: 0; }
+  ::selection { background: var(--accent); color: var(--accent-foreground); }
+}
+
+@utility font-display { font-family: var(--font-display); }
+
+@utility page-shell {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 40rem) { padding-inline: 2rem; }
+  @media (width >= 64rem) { padding-inline: 3rem; }
+}
+
+@utility page-intro { padding-block: 4rem 0; @media (width >= 40rem) { padding-block-start: 6rem; } }
+
+@utility eyebrow {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility nav-link {
+  position: relative;
+  padding-block: 0.5rem;
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  transition: color 200ms ease;
+  &:hover { color: var(--foreground); }
+  &::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 1px; background: var(--accent); transform: scaleX(0); transition: transform 200ms ease; }
+  &[data-status="active"]::after { transform: scaleX(1); }
+}
+
+@utility form-label { display: grid; gap: 0.625rem; font-size: 0.6875rem; line-height: 1rem; text-transform: uppercase; color: var(--muted-foreground); }
+@utility editorial-field { height: 3rem; border-width: 0 0 1px 0; border-radius: 0; padding-inline: 0; box-shadow: none; color: var(--foreground); }
+@utility bg-overlay { background: var(--overlay); }
+@utility bg-dialog-overlay { background: var(--dialog-overlay); }
+@utility bg-hero-overlay { background: linear-gradient(to top, var(--overlay), transparent 60%); }
+
+@keyframes page-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@utility page-enter { animation: page-enter 500ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }

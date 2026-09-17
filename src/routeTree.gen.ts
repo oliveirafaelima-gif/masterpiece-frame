@@ -10,33 +10,90 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CinemaRouteImport } from './routes/cinema'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as InstalacoesRouteImport } from './routes/instalacoes'
+import { Route as ObrasRouteImport } from './routes/obras'
+import { Route as SobreRouteImport } from './routes/sobre'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CinemaRoute = CinemaRouteImport.update({
+  id: '/cinema',
+  path: '/cinema',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstalacoesRoute = InstalacoesRouteImport.update({
+  id: '/instalacoes',
+  path: '/instalacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObrasRoute = ObrasRouteImport.update({
+  id: '/obras',
+  path: '/obras',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cinema': typeof CinemaRoute
+  '/contato': typeof ContatoRoute
+  '/instalacoes': typeof InstalacoesRoute
+  '/obras': typeof ObrasRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cinema': typeof CinemaRoute
+  '/contato': typeof ContatoRoute
+  '/instalacoes': typeof InstalacoesRoute
+  '/obras': typeof ObrasRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cinema': typeof CinemaRoute
+  '/contato': typeof ContatoRoute
+  '/instalacoes': typeof InstalacoesRoute
+  '/obras': typeof ObrasRoute
+  '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/cinema' | '/contato' | '/instalacoes' | '/obras' | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/cinema' | '/contato' | '/instalacoes' | '/obras' | '/sobre'
+  id:
+    | '__root__'
+    | '/'
+    | '/cinema'
+    | '/contato'
+    | '/instalacoes'
+    | '/obras'
+    | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CinemaRoute: typeof CinemaRoute
+  ContatoRoute: typeof ContatoRoute
+  InstalacoesRoute: typeof InstalacoesRoute
+  ObrasRoute: typeof ObrasRoute
+  SobreRoute: typeof SobreRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +105,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cinema': {
+      id: '/cinema'
+      path: '/cinema'
+      fullPath: '/cinema'
+      preLoaderRoute: typeof CinemaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/instalacoes': {
+      id: '/instalacoes'
+      path: '/instalacoes'
+      fullPath: '/instalacoes'
+      preLoaderRoute: typeof InstalacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obras': {
+      id: '/obras'
+      path: '/obras'
+      fullPath: '/obras'
+      preLoaderRoute: typeof ObrasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CinemaRoute: CinemaRoute,
+  ContatoRoute: ContatoRoute,
+  InstalacoesRoute: InstalacoesRoute,
+  ObrasRoute: ObrasRoute,
+  SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
